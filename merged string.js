@@ -1,5 +1,6 @@
 //after kata https://www.codewars.com/kata/54c9fcad28ec4c6e680011aa/train/javascript
-
+//not working when same letter is checked
+//possible solution: check also letter after current letter?
 
 function isMerge(s, part1, part2) {
   
