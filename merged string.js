@@ -63,3 +63,53 @@ function isMerge(s, part1, part2) {
   return false
 }
 */
+
+
+//working solution passing all tests
+function isMerge(s, part1, part2) {
+//convert to array to sort it and join it back to compare it
+// first check if there is a solution
+  let a=(part1+part2).split("").sort().join("")
+  let b=s.split("").sort().join("")
+	if (a!=b) return false
+
+  
+  //approach is to deconstruct from end which will deliver just one solution while
+  //from the beginning could deliver more than one
+  //reverse input
+  s=s.split("").reverse().join("")
+  part1=part1.split("").reverse().join("")
+  part2=part2.split("").reverse().join("")
+  
+  let maxLength=0
+  let SLength =s.length //to prevent recursive loop
+  
+  console.log(s, part1, part2)
+  
+  for(let i=0; i<SLength; i++){
+    //maximum possible substring that fits in one of the parts
+    maxLength=Math.max(part1.length, part2.length)
+    
+    for (let j=0; j<maxLength; j++){
+    	let subString=s.substring(0,maxLength-j)
+      if (part1.indexOf(subString)===0){
+        console.log("found in part1")
+        s=s.replace(subString, "") //remove found part
+        part1=part1.replace(subString, "") //remove found part
+        j=maxLength-1 //cancel inner loop when found
+      }
+      if (part2.indexOf(subString)===0){
+        console.log("found in part2")
+        s=s.replace(subString, "") 
+        part2=part2.replace(subString, "")
+        j=maxLength-1
+      }
+    }
+  }
+	
+  if (part1.length ===0 && part2.length===0) {
+    return true
+  }
+ 
+  return false
+}
