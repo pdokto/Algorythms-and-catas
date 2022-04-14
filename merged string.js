@@ -2,6 +2,7 @@
 //not working when same letter is checked
 //possible solution: check also letter after current letter?
 
+/*
 function isMerge(s, part1, part2) {
   
   for (let i=0; i< s.length; i++ ){
@@ -15,4 +16,14 @@ function isMerge(s, part1, part2) {
 }
 
 
+
 isMerge ('xcyc', 'xc', 'cy') //true
+*/
+
+// second attempt with different approach
+
+function isMerge(s, part1, part2) {
+return (part1+part2).split("").sort().join()== s.split("").sort().join()? true : false
+}
+
+//will solve most tests but one where the order is important.
