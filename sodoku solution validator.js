@@ -15,13 +15,14 @@ function validSolution(board){
     //check columns 
     if (new Set (board.map(row=>row[i])).size !=9)  return false
     //check subgrids 
-    //create9 subgrids that automatically have to correct starting points
+    //create 9 subgrids that automatically have to correct starting points as an 1D array for easy use
     for (let j=0; j<3; j++){
       for (let k=0; k<3; k++){
         subGrid.push(board[j+(i%3*3)][k+counter*3])
       }
     }  
-  	if(new Set (subGrid).size<9) return false
+  	//console.log(subGrid)
+    if(new Set (subGrid).size<9) return false
     subGrid=[]
   	if (i%3===2) counter+=1                 
   }
