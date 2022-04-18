@@ -15,9 +15,26 @@ function rgb(r, g, b){
   g=checkValidValue(g).toString(16)
   b=checkValidValue(b).toString(16)
  
-	if(r.length < 2) r="0"+r
+	
+  if(r.length < 2) r="0"+r
   if(g.length < 2) g="0"+g
   if(b.length < 2) b="0"+b
   
   return (r + g + b).toUpperCase()
+}
+
+//not following DRY
+// better solution:
+
+function rgb(r, g, b){
+ 
+  function toHex(value){
+    if (value < 0) return "00"
+    if (value > 255) return "FF"
+    return ("0"+Number(value).toString(16)).slice(-2).toUpperCase() 
+  }
+ 
+ //length of value will sometimes be 1, so function will always add a "0" before and then slice(-2). Will cut off if the "0" 
+// at the beginning is too much 
+  return toHex(r) + toHex(g) + toHex(b)
 }
