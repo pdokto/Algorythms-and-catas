@@ -16,3 +16,20 @@ function rot13(str) {
   
  return rotted
 }
+
+
+//solution with ternary statement
+
+
+function rot13(str) {
+  const input = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  const output= "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"
+ 
+ let rotted=str.split("").map(function(letter)  {
+  	
+   let index=input.indexOf(letter)
+   return  index >-1? letter=output[index] : letter
+ }).join("")
+  
+ return rotted
+}
